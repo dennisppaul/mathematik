@@ -1,4 +1,4 @@
 mathematik
 ==========
 
-A light-weight linear algebra library.
+a light-weight linear algebra library.

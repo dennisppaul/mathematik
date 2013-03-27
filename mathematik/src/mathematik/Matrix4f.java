@@ -19,19 +19,14 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
 /**
  * a more general 4x4 matrix.
  *
- *   xx yx zx wx
- *   xy yy zy wy
- *   xz yz zz wz
- *   xw yw zw ww
+ * xx yx zx wx xy yy zy wy xz yz zz wz xw yw zw ww
  *
- * also read 'The Matrix and Quaternions FAQ' at http://www.flipcode.com/documents/matrfaq.html
+ * also read 'The Matrix and Quaternions FAQ' at
+ * http://www.flipcode.com/documents/matrfaq.html
  */
-
-
 package mathematik;
 
 
@@ -39,7 +34,7 @@ import java.io.Serializable;
 
 
 public class Matrix4f
-    implements Serializable {
+        implements Serializable {
 
     private static final long serialVersionUID = -1088603850006298206L;
 
@@ -80,7 +75,6 @@ public class Matrix4f
     public Matrix4f() {
     }
 
-
     public Matrix4f(TransformMatrix4f theTransformMatrix) {
         xx = theTransformMatrix.rotation.xx;
         yx = theTransformMatrix.rotation.yx;
@@ -102,7 +96,6 @@ public class Matrix4f
         zw = theTransformMatrix.translation.z;
         ww = 1;
     }
-
 
     public Matrix4f(Matrix4f theTransformMatrix) {
         xx = theTransformMatrix.xx;
@@ -126,16 +119,13 @@ public class Matrix4f
         ww = theTransformMatrix.ww;
     }
 
-
     public Matrix4f(float[] theMatrix) {
         set(theMatrix);
     }
 
-
     public Matrix4f(double[] theMatrix) {
         set(theMatrix);
     }
-
 
     public Matrix4f(float xx,
                     float yx,
@@ -174,7 +164,6 @@ public class Matrix4f
         this.ww = ww;
     }
 
-
     public void set(float[] theMatrix) {
         xx = theMatrix[0];
         yx = theMatrix[1];
@@ -197,7 +186,6 @@ public class Matrix4f
         ww = theMatrix[15];
     }
 
-
     public void set(double[] theMatrix) {
         xx = (float) theMatrix[0];
         yx = (float) theMatrix[1];
@@ -219,7 +207,6 @@ public class Matrix4f
         zw = (float) theMatrix[14];
         ww = (float) theMatrix[15];
     }
-
 
     public void set(float xx,
                     float yx,
@@ -258,7 +245,6 @@ public class Matrix4f
         this.ww = ww;
     }
 
-
     public void invert() {
         float myDeterminant = determinant();
         if (myDeterminant == 0.0) {
@@ -269,17 +255,14 @@ public class Matrix4f
             zy * (xz * ww - xw * wz) + zz * (xw * wy - xy * ww) + zw * (xy * wz - xz * wy),
             wy * (xz * yw - xw * yz) + wz * (xw * yy - xy * yw) + ww * (xy * yz - xz * yy),
             xy * (yw * zz - yz * zw) + xz * (yy * zw - yw * zy) + xw * (yz * zy - yy * zz),
-
             yz * (zx * ww - zw * wx) + yw * (zz * wx - zx * wz) + yx * (zw * wz - zz * ww),
             zz * (xx * ww - xw * wx) + zw * (xz * wx - xx * wz) + zx * (xw * wz - xz * ww),
             wz * (xx * yw - xw * yx) + ww * (xz * yx - xx * yz) + wx * (xw * yz - xz * yw),
             xz * (yw * zx - yx * zw) + xw * (yx * zz - yz * zx) + xx * (yz * zw - yw * zz),
-
             yw * (zx * wy - zy * wx) + yx * (zy * ww - zw * wy) + yy * (zw * wx - zx * ww),
             zw * (xx * wy - xy * wx) + zx * (xy * ww - xw * wy) + zy * (xw * wx - xx * ww),
             ww * (xx * yy - xy * yx) + wx * (xy * yw - xw * yy) + wy * (xw * yx - xx * yw),
             xw * (yy * zx - yx * zy) + xx * (yw * zy - yy * zw) + xy * (yx * zw - yw * zx),
-
             yx * (zz * wy - zy * wz) + yy * (zx * wz - zz * wx) + yz * (zy * wx - zx * wy),
             zx * (xz * wy - xy * wz) + zy * (xx * wz - xz * wx) + zz * (xy * wx - xx * wy),
             wx * (xz * yy - xy * yz) + wy * (xx * yz - xz * yx) + wz * (xy * yx - xx * yy),
@@ -287,7 +270,6 @@ public class Matrix4f
 
         multiply(myDeterminant);
     }
-
 
     public void multiply(float scalar) {
         xx *= scalar;
@@ -308,45 +290,42 @@ public class Matrix4f
         ww *= scalar;
     }
 
-
     public final void multiply(Matrix4f theMatrix) {
         multiply(this,
                  theMatrix);
     }
 
-
     public final void multiply(Matrix4f theA,
                                Matrix4f theB) {
-        /** @todo here we still have an ugly bug :( */
+        /**
+         * @todo here we still have an ugly bug :(
+         */
         set(theA.xx * theB.xx + theA.yx * theB.xy + theA.zx * theB.xz + theA.wx * theB.xw,
             theA.xx * theB.yx + theA.yx * theB.yy + theA.zx * theB.yz + theA.wx * theB.yw,
             theA.xx * theB.zx + theA.yx * theB.zy + theA.zx * theB.zz + theA.wx * theB.zw,
             theA.xx * theB.wx + theA.yx * theB.wy + theA.zx * theB.wz + theA.wx * theB.ww,
-
             theA.xy * theB.xx + theA.yy * theB.xy + theA.zy * theB.xz + theA.wy * theB.xw,
             theA.xy * theB.yx + theA.yy * theB.yy + theA.zy * theB.yz + theA.wy * theB.yw,
             theA.xy * theB.zx + theA.yy * theB.zy + theA.zy * theB.zz + theA.wy * theB.zw,
             theA.xy * theB.wx + theA.yy * theB.wy + theA.zy * theB.wz + theA.wy * theB.ww,
-
             theA.xz * theB.xx + theA.yz * theB.xy + theA.zz * theB.xz + theA.wz * theB.xw,
             theA.xz * theB.yx + theA.yz * theB.yy + theA.zz * theB.yz + theA.wz * theB.yw,
             theA.xz * theB.zx + theA.yz * theB.zy + theA.zz * theB.zz + theA.wz * theB.zw,
             theA.xz * theB.wx + theA.yz * theB.wy + theA.zz * theB.wz + theA.wz * theB.ww,
-
             theA.xw * theB.xx + theA.yw * theB.xy + theA.zw * theB.xz + theA.ww * theB.xw,
             theA.xw * theB.yx + theA.yw * theB.yy + theA.zw * theB.yz + theA.ww * theB.yw,
             theA.xw * theB.zx + theA.yw * theB.zy + theA.zw * theB.zz + theA.ww * theB.zw,
             theA.xw * theB.wx + theA.yw * theB.wy + theA.zw * theB.wz + theA.ww * theB.ww);
     }
 
-
     public float determinant() {
-        /** @todo check if this is correct */
+        /**
+         * @todo check if this is correct
+         */
         return (xx * yy - xy * yx) * (zz * ww - zw * wz) - (xx * yz - xz * yx) * (zy * ww - zw * wy)
-            + (xx * yw - xw * yx) * (zy * wz - zz * wy) + (xy * yz - xz * yy) * (zx * ww - zw * wx)
-            - (xy * yw - xw * yy) * (zx * wz - zz * wx) + (xz * yw - xw * yz) * (zx * wy - zy * wx);
+                + (xx * yw - xw * yx) * (zy * wz - zz * wy) + (xy * yz - xz * yy) * (zx * ww - zw * wx)
+                - (xy * yw - xw * yy) * (zx * wz - zz * wx) + (xz * yw - xw * yz) * (zx * wy - zy * wx);
     }
-
 
     public final void transform(Vector3f theResult) {
         theResult.set(xx * theResult.x + xy * theResult.y + xz * theResult.z + xw,
@@ -354,14 +333,12 @@ public class Matrix4f
                       zx * theResult.x + zy * theResult.y + zz * theResult.z + zw);
     }
 
-
     public final void transform(Vector4f theVector) {
         theVector.set(xx * theVector.x + xy * theVector.y + xz * theVector.z + xw * theVector.w,
                       yx * theVector.x + yy * theVector.y + yz * theVector.z + yw * theVector.w,
                       zx * theVector.x + zy * theVector.y + zz * theVector.z + zw * theVector.w,
                       wx * theVector.x + wy * theVector.y + wz * theVector.z + ww * theVector.w);
     }
-
 
     public float[] toArray() {
         /* opengl format */
@@ -387,7 +364,6 @@ public class Matrix4f
         return _myArrayRepresentation;
     }
 
-
     public final void transpose() {
         float swap = yx;
         yx = xy;
@@ -409,12 +385,10 @@ public class Matrix4f
         zw = swap;
     }
 
-
     public String toString() {
         return xx + ", " + yx + ", " + zx + ", " + wx + "\n" + xy + ", " + yy + ", " + zy + ", " + wy + "\n" + xz
-            + ", " + yz + ", " + zz + ", " + wz + "\n" + xw + ", " + yw + ", " + zw + ", " + ww;
+                + ", " + yz + ", " + zz + ", " + wz + "\n" + xw + ", " + yw + ", " + zw + ", " + ww;
     }
-
 
     public static void main(String[] args) {
         TransformMatrix4f myTransMatrix = new TransformMatrix4f(TransformMatrix4f.IDENTITY);

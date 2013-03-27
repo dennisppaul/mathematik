@@ -19,8 +19,6 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
 
 
@@ -29,11 +27,11 @@ import java.io.Serializable;
 
 /**
  * generate random numbers.<br/>
- * note that if different types are requested the
- * random generator moves on anyway.
+ * note that if different types are requested the random generator moves on
+ * anyway.
  */
 public class Random
-    implements Serializable {
+        implements Serializable {
 
     private static final long serialVersionUID = -5871934750136232555L;
 
@@ -47,34 +45,29 @@ public class Random
         _myInstance = new Random();
     }
 
-
     public static float FLOAT(float theStart, float theEnd) {
         return _myInstance.getFloat(theStart, theEnd);
     }
-
 
     public static float INT(int theStart, int theEnd) {
         return _myInstance.getInt(theStart, theEnd);
     }
 
-
     public Random() {
         this(_mySeedGenerator.nextLong());
     }
-
 
     public Random(long theSeed) {
         myRandomNumberGenerator = new java.util.Random(theSeed);
     }
 
-
     public void setSeed(long theSeed) {
         myRandomNumberGenerator.setSeed(theSeed);
     }
 
-
     /**
      * return a random int value from theStart to theEnd, including both values.
+     *
      * @param theStart int
      * @param theEnd int
      * @return int
@@ -85,15 +78,14 @@ public class Random
         return myRandomNumberGenerator.nextInt(myDiff) + theStart;
     }
 
-
     public int getInt() {
         return myRandomNumberGenerator.nextInt();
     }
 
-
     /**
      * return a random float value from theStart to theEnd, excluding both
      * values.
+     *
      * @param theStart float
      * @param theEnd float
      * @return float
@@ -105,24 +97,19 @@ public class Random
         return myRandomValue + theStart;
     }
 
-
     public float getFloat() {
         return myRandomNumberGenerator.nextFloat();
     }
-
 
 //    public static float getFloat(float theStart,
 //                                 float theEnd) {
 //        return _mySeedGenerator.getFloat(theStart, theEnd);
 //    }
-
-
     public Vector3f getVector3f(float theStart, float theEnd) {
         return new Vector3f(getFloat(theStart, theEnd),
                             getFloat(theStart, theEnd),
                             getFloat(theStart, theEnd));
     }
-
 
     public static void main(String[] args) {
         long myTime;

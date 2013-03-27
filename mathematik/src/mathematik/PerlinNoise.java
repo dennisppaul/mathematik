@@ -1,5 +1,3 @@
-
-
 package mathematik;
 
 
@@ -9,16 +7,12 @@ import java.util.Random;
 public abstract class PerlinNoise {
 
     //////////////////////////////////////////////////////////////
-
     // PERLIN NOISE
-
     // [toxi 040903]
     // octaves and amplitude amount per octave are now user controlled
     // via the noiseDetail() function.
-
     // [toxi 030902]
     // cleaned up code and now using bagel's cosine table to speed up
-
     // [toxi 030901]
     // implementation by the german demo group farbrausch
     // as used in their demo "art": http://www.farb-rausch.de/fr010src.zip
@@ -38,7 +32,7 @@ public abstract class PerlinNoise {
 
     // [toxi 031112]
     // new vars needed due to recent change of cos table in PGraphics
-    static int perlin_TWOPI,  perlin_PI;
+    static int perlin_TWOPI, perlin_PI;
 
     static float[] perlin_cosTable;
 
@@ -90,10 +84,10 @@ public abstract class PerlinNoise {
             z = -z;
         }
 
-        int xi = (int)x, yi = (int)y, zi = (int)z;
-        float xf = (float)(x - xi);
-        float yf = (float)(y - yi);
-        float zf = (float)(z - zi);
+        int xi = (int) x, yi = (int) y, zi = (int) z;
+        float xf = (float) (x - xi);
+        float yf = (float) (y - yi);
+        float zf = (float) (z - zi);
         float rxf, ryf;
 
         float r = 0;
@@ -147,21 +141,17 @@ public abstract class PerlinNoise {
         return r;
     }
 
-
     // [toxi 031112]
     // now adjusts to the size of the cosLUT used via
     // the new variables, defined above
     private static float noise_fsc(float i) {
         // using bagel's cosine table instead
-        return 0.5f * (1.0f - perlin_cosTable[(int)(i * perlin_PI) % perlin_TWOPI]);
+        return 0.5f * (1.0f - perlin_cosTable[(int) (i * perlin_PI) % perlin_TWOPI]);
     }
-
-
     // precalculate sin/cos lookup tables [toxi]
     // circle resolution is determined from the actual used radii
     // passed to ellipse() method. this will automatically take any
     // scale transformations into account too
-
     // [toxi 031031]
     // changed table's precision to 0.5 degree steps
     // introduced new vars for more flexible code
@@ -171,19 +161,18 @@ public abstract class PerlinNoise {
 
     static final protected float SINCOS_PRECISION = 0.5f;
 
-    static final protected int SINCOS_LENGTH = (int)(360f / SINCOS_PRECISION);
+    static final protected int SINCOS_LENGTH = (int) (360f / SINCOS_PRECISION);
 
-    static final float DEG_TO_RAD = (float)Math.PI / 180.0f;
+    static final float DEG_TO_RAD = (float) Math.PI / 180.0f;
 
-    static final float RAD_TO_DEG = 180.0f / (float)Math.PI;
-
+    static final float RAD_TO_DEG = 180.0f / (float) Math.PI;
 
     static {
         sinLUT = new float[SINCOS_LENGTH];
         cosLUT = new float[SINCOS_LENGTH];
         for (int i = 0; i < SINCOS_LENGTH; i++) {
-            sinLUT[i] = (float)Math.sin(i * DEG_TO_RAD * SINCOS_PRECISION);
-            cosLUT[i] = (float)Math.cos(i * DEG_TO_RAD * SINCOS_PRECISION);
+            sinLUT[i] = (float) Math.sin(i * DEG_TO_RAD * SINCOS_PRECISION);
+            cosLUT[i] = (float) Math.cos(i * DEG_TO_RAD * SINCOS_PRECISION);
         }
     }
 }

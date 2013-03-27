@@ -19,17 +19,15 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
+
 
 import java.io.Serializable;
 
 
 /**
- * beware this is not really in good shape.
- * i ll read my linear algebra book and fix this class.
- * someday. hopefully.
+ * beware this is not really in good shape. i ll read my linear algebra book and
+ * fix this class. someday. hopefully.
  */
 public final class Intersection
         implements Serializable,
@@ -285,9 +283,9 @@ public final class Intersection
 
     /**
      * grabbed from Xith
-     * @todo not sure whether this is for ray-plane or
-     * line-plane intersection. but i think it s for latter,
-     * hence the method name.
+     *
+     * @todo not sure whether this is for ray-plane or line-plane intersection.
+     * but i think it s for latter, hence the method name.
      *
      * @param thePlane Plane3f
      * @param theRay Ray3f
@@ -312,11 +310,11 @@ public final class Intersection
 
         if (theIntersectionPoint != null) {
             theIntersectionPoint.set(theRay.direction);
-            theIntersectionPoint.scale((float)time);
+            theIntersectionPoint.scale((float) time);
             theIntersectionPoint.add(theRay.origin);
         }
 
-        return (float)time;
+        return (float) time;
     }
 
 //    /**
@@ -542,9 +540,8 @@ public final class Intersection
     }
 
     /**
-     * Fast, Minimum Storage Ray-Triangle Intersection
-     * by Tomas Moeller & Ben Trumbore
-     * http://jgt.akpeters.com/papers/MollerTrumbore97/code.html
+     * Fast, Minimum Storage Ray-Triangle Intersection by Tomas Moeller & Ben
+     * Trumbore http://jgt.akpeters.com/papers/MollerTrumbore97/code.html
      *
      * @param theRayOrigin Vector3f
      * @param theRayDirection Vector3f
@@ -641,6 +638,7 @@ public final class Intersection
         public float u;
 
         public float v;
+
     }
 
     public static float intersectRayTriangle(final Vector3f theRayOrigin,
@@ -719,13 +717,11 @@ public final class Intersection
 
     /**
      * http://local.wasp.uwa.edu.au/~pbourke/geometry/sphereline/raysphere.c
-     * Calculate the intersection of a ray and a sphere
-     * The line segment is defined from p1 to p2
-     * The sphere is of radius r and centered at sc
-     * There are potentially two points of intersection given by
-     * p = p1 + mu1 (p2 - p1)
-     * p = p1 + mu2 (p2 - p1)
-     * Return FALSE if the ray doesn't intersect the sphere.
+     * Calculate the intersection of a ray and a sphere The line segment is
+     * defined from p1 to p2 The sphere is of radius r and centered at sc There
+     * are potentially two points of intersection given by p = p1 + mu1 (p2 -
+     * p1) p = p1 + mu2 (p2 - p1) Return FALSE if the ray doesn't intersect the
+     * sphere.
      */
     public static boolean RaySphere(Vector3f p1,
                                     Vector3f p2,
@@ -762,9 +758,9 @@ public final class Intersection
 
         return true;
     }
-
     /**
-     * from paul bourke ( http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline2d/ )
+     * from paul bourke (
+     * http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline2d/ )
      *
      */
     public static final int COINCIDENT = 0;
@@ -810,13 +806,13 @@ public final class Intersection
     }
 
     /**
-     * from paul bourke ( http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline3d/ )
+     * from paul bourke (
+     * http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline3d/ )
      *
-     * Calculate the line segment PaPb that is the shortest route between
-     * two lines P1P2 and P3P4. Calculate also the values of mua and mub where
-     * Pa = P1 + mua (P2 - P1)
-     * Pb = P3 + mub (P4 - P3)
-     * Return FALSE if no solution exists.
+     * Calculate the line segment PaPb that is the shortest route between two
+     * lines P1P2 and P3P4. Calculate also the values of mua and mub where Pa =
+     * P1 + mua (P2 - P1) Pb = P3 + mub (P4 - P3) Return FALSE if no solution
+     * exists.
      *
      */
     public static boolean lineLineIntersect(Vector3f p1, Vector3f p2, Vector3f p3, Vector3f p4,
@@ -886,15 +882,15 @@ public final class Intersection
             numIntersections = 2;
         }
 
-        // Atleast one intersection        
+        // Atleast one intersection
         Vector3f[] points = new Vector3f[numIntersections];
         float t0;
         float t1 = 0.0f;
-        t0 = ((0.5f * (-1.0f * b + (float)Math.sqrt(disc))) / a);
+        t0 = ((0.5f * (-1.0f * b + (float) Math.sqrt(disc))) / a);
         if (numIntersections == 2) {
-            t1 = ((0.5f * (-1.0f * b - (float)Math.sqrt(disc))) / a);
+            t1 = ((0.5f * (-1.0f * b - (float) Math.sqrt(disc))) / a);
         }
-        // point 1 of intersection 
+        // point 1 of intersection
         points[0] = new Vector3f(pRayDirection);
         points[0].scale(t0);
         points[0].add(pRayOrigin);

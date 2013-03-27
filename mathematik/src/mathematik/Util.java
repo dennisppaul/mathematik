@@ -40,8 +40,8 @@ public class Util {
     public static final Vector3f AXIS_Z = new Vector3f(0, 0, 1);
 
     public static final float areaTriangle(final Vector3f v0,
-            final Vector3f v1,
-            final Vector3f v2) {
+                                           final Vector3f v1,
+                                           final Vector3f v2) {
         final Vector3f myAB = sub(v1, v0);
         final Vector3f myAC = sub(v2, v0);
         final Vector3f myCross = cross(myAB, myAC);
@@ -53,9 +53,9 @@ public class Util {
     }
 
     public static final boolean isPointInTriangle(final Vector3f v0,
-            final Vector3f v1,
-            final Vector3f v2,
-            final Vector3f thePoint) {
+                                                  final Vector3f v1,
+                                                  final Vector3f v2,
+                                                  final Vector3f thePoint) {
 //    // Compute vectors
 //    v0 = C - A
 //    v1 = B - A
@@ -90,15 +90,15 @@ public class Util {
 
     /* contain */
     public static final boolean contains(final Vector3f thePosition,
-            final WorldAxisAlignedBoundingBox theWorldAlignedBox) {
+                                         final WorldAxisAlignedBoundingBox theWorldAlignedBox) {
         return (contains(thePosition.x, theWorldAlignedBox.position.x, theWorldAlignedBox.scale.x)
                 && contains(thePosition.y, theWorldAlignedBox.position.y, theWorldAlignedBox.scale.y)
                 && contains(thePosition.z, theWorldAlignedBox.position.z, theWorldAlignedBox.scale.z));
     }
 
     public static final boolean contains(final float theTestValue,
-            final float theContainerValue,
-            final float theRange) {
+                                         final float theContainerValue,
+                                         final float theRange) {
         return (theTestValue > theContainerValue - theRange * 0.5f
                 && theTestValue < theContainerValue + theRange * 0.5f);
     }
@@ -155,7 +155,7 @@ public class Util {
     private static final Vector3f _myTempMax = new Vector3f();
 
     public static void updateBoundingBox(final WorldAxisAlignedBoundingBox theWorldAxisAlignedBoundingBox,
-            final Vector3f[] myVectors) {
+                                         final Vector3f[] myVectors) {
 
         if (myVectors == null || myVectors.length == 0) {
             return;
@@ -207,8 +207,8 @@ public class Util {
     private static final Vector3f _myTempUpVector = new Vector3f();
 
     public static void pointAt(final TransformMatrix4f theResult,
-            final Vector3f theUpVector,
-            final Vector3f thePointAtPosition) {
+                               final Vector3f theUpVector,
+                               final Vector3f thePointAtPosition) {
 
         pointAt(theResult,
                 theResult.translation,
@@ -237,9 +237,9 @@ public class Util {
     }
 
     public static void pointAt(final TransformMatrix4f theResult,
-            final Vector3f thePosition,
-            final Vector3f theUpVector,
-            final Vector3f thePointAtPosition) {
+                               final Vector3f thePosition,
+                               final Vector3f theUpVector,
+                               final Vector3f thePointAtPosition) {
         /* forward */
         _myTempForwardVector.sub(thePosition, thePointAtPosition);
         _myTempForwardVector.normalize();
@@ -262,8 +262,8 @@ public class Util {
     }
 
     public static void pointAlong(final TransformMatrix4f theResult,
-            final Vector3f theForwardVector,
-            final Vector3f theUpVector) {
+                                  final Vector3f theForwardVector,
+                                  final Vector3f theUpVector) {
         /* forward */
         _myTempForwardVector.set(theForwardVector);
         _myTempForwardVector.normalize();
@@ -291,10 +291,10 @@ public class Util {
     }
 
     public static final float bilinearInterp(final float x, final float y,
-            final float q00,
-            final float q10,
-            final float q01,
-            final float q11) {
+                                             final float q00,
+                                             final float q10,
+                                             final float q01,
+                                             final float q11) {
         return q00 * (1 - x) * (1 - y)
                 + q10 * x * (1 - y)
                 + q01 * (1 - x) * y
@@ -314,9 +314,9 @@ public class Util {
      * @param theResultNormal
      */
     public static final void calculateNormal(final Vector3f pointA,
-            final Vector3f pointB,
-            final Vector3f pointC,
-            final Vector3f theResultNormal) {
+                                             final Vector3f pointB,
+                                             final Vector3f pointC,
+                                             final Vector3f theResultNormal) {
         TMP_BA.sub(pointB, pointA);
         TMP_BC.sub(pointC, pointB);
 
@@ -331,8 +331,8 @@ public class Util {
      * @param theResultNormal Vector3f
      */
     public static void calculateNormal(final Vector3f theVectorAB,
-            final Vector3f theVectorBC,
-            final Vector3f theResultNormal) {
+                                       final Vector3f theVectorBC,
+                                       final Vector3f theResultNormal) {
         theResultNormal.cross(theVectorAB, theVectorBC);
         theResultNormal.normalize();
     }
@@ -345,13 +345,13 @@ public class Util {
      * @return Vector3f
      */
     public static Vector3f createNormal(final Vector3f pointA,
-            final Vector3f pointB,
-            final Vector3f pointC) {
+                                        final Vector3f pointB,
+                                        final Vector3f pointC) {
         final Vector3f myResultNormal = new Vector3f();
         calculateNormal(pointA,
-                pointB,
-                pointC,
-                myResultNormal);
+                        pointB,
+                        pointC,
+                        myResultNormal);
         return myResultNormal;
     }
 
@@ -362,11 +362,11 @@ public class Util {
      * @return Vector3f
      */
     public static Vector3f createNormal(final Vector3f theVectorAB,
-            final Vector3f theVectorBC) {
+                                        final Vector3f theVectorBC) {
         final Vector3f myResultNormal = new Vector3f();
         calculateNormal(theVectorAB,
-                theVectorBC,
-                myResultNormal);
+                        theVectorBC,
+                        myResultNormal);
         return myResultNormal;
     }
 
@@ -420,9 +420,9 @@ public class Util {
      */
     public static final Vector4f add(Vector4f theVectorA, Vector4f theVectorB) {
         return new Vector4f(theVectorA.w + theVectorB.w,
-                theVectorA.x + theVectorB.x,
-                theVectorA.y + theVectorB.y,
-                theVectorA.z + theVectorB.z);
+                            theVectorA.x + theVectorB.x,
+                            theVectorA.y + theVectorB.y,
+                            theVectorA.z + theVectorB.z);
     }
 
     /**
@@ -445,7 +445,7 @@ public class Util {
      */
     public static final Vector2f add(Vector2f theVectorA, Vector2f theVectorB) {
         return new Vector2f(theVectorA.x + theVectorB.x,
-                theVectorA.y + theVectorB.y);
+                            theVectorA.y + theVectorB.y);
     }
 
     /**
@@ -481,7 +481,7 @@ public class Util {
      */
     public static final Vector4f sub(Vector4f theVectorA, Vector4f theVectorB) {
         return new Vector4f(theVectorA.w - theVectorB.w, theVectorA.x - theVectorB.x, theVectorA.y - theVectorB.y,
-                theVectorA.z - theVectorB.z);
+                            theVectorA.z - theVectorB.z);
     }
 
     /**
@@ -515,8 +515,8 @@ public class Util {
      */
     public static final Vector3i sub(Vector3i theVectorA, Vector3i theVectorB) {
         return new Vector3i(theVectorA.x - theVectorB.x,
-                theVectorA.y - theVectorB.y,
-                theVectorA.z - theVectorB.z);
+                            theVectorA.y - theVectorB.y,
+                            theVectorA.z - theVectorB.z);
     }
 
     /**
@@ -528,7 +528,7 @@ public class Util {
      */
     public static final Vector2i sub(Vector2i theVectorA, Vector2i theVectorB) {
         return new Vector2i(theVectorA.x - theVectorB.x,
-                theVectorA.y - theVectorB.y);
+                            theVectorA.y - theVectorB.y);
     }
 
     /**
@@ -564,26 +564,26 @@ public class Util {
      */
     public static final Vector2f scale(Vector2f theVectorA, float theValue) {
         return new Vector2f(theVectorA.x * theValue,
-                theVectorA.y * theValue);
+                            theVectorA.y * theValue);
     }
 
     public static final Vector3f scale(Vector3f theVectorA, float theValue) {
         return new Vector3f(theVectorA.x * theValue,
-                theVectorA.y * theValue,
-                theVectorA.z * theValue);
+                            theVectorA.y * theValue,
+                            theVectorA.z * theValue);
     }
 
     public static final Vector3f scale(Vector3f theVectorA, Vector3f theValue) {
         return new Vector3f(theVectorA.x * theValue.x,
-                theVectorA.y * theValue.y,
-                theVectorA.z * theValue.z);
+                            theVectorA.y * theValue.y,
+                            theVectorA.z * theValue.z);
     }
 
     public static final Vector4f scale(Vector4f theVectorA, float theValue) {
         return new Vector4f(theVectorA.x * theValue,
-                theVectorA.y * theValue,
-                theVectorA.z * theValue,
-                theVectorA.w * theValue);
+                            theVectorA.y * theValue,
+                            theVectorA.z * theValue,
+                            theVectorA.w * theValue);
     }
 
     public static final float clamp(float theValue, float theMin, float theMax) {
@@ -613,7 +613,7 @@ public class Util {
         }
         String[] coords = theString.split(splitter);
         return new Vector2f(Float.parseFloat(coords[0]),
-                Float.parseFloat(coords[1]));
+                            Float.parseFloat(coords[1]));
     }
 
     public static Vector3f parseVector3f(String theString) {
@@ -625,8 +625,8 @@ public class Util {
         }
         String[] coords = theString.split(splitter);
         return new Vector3f(Float.parseFloat(coords[0]),
-                Float.parseFloat(coords[1]),
-                Float.parseFloat(coords[2]));
+                            Float.parseFloat(coords[1]),
+                            Float.parseFloat(coords[2]));
     }
 
     public static boolean contains(String theString, CharSequence theContainedString) {
@@ -651,8 +651,8 @@ public class Util {
      * @return Vector3f
      */
     public static Vector3f rotatePoint(Vector3f p,
-            double theta,
-            Vector3f theAxis) {
+                                       double theta,
+                                       Vector3f theAxis) {
         Vector3f myR = new Vector3f();
         Vector3f q = new Vector3f();
         double costheta, sintheta;
@@ -685,9 +685,9 @@ public class Util {
      * Assume right hand coordinate system.
      */
     public static Vector3f rotatePoint(Vector3f p,
-            double theta,
-            Vector3f p1,
-            Vector3f p2) {
+                                       double theta,
+                                       Vector3f p1,
+                                       Vector3f p2) {
         Vector3f r = new Vector3f();
         Vector3f q = new Vector3f();
         Vector3f myP = new Vector3f();
@@ -740,8 +740,8 @@ public class Util {
      * @return float
      */
     public static float distancePointLineSegment(final Vector3f thePoint,
-            final Vector3f theLineStart,
-            final Vector3f theLineEnd) {
+                                                 final Vector3f theLineStart,
+                                                 final Vector3f theLineEnd) {
         final float u = distancePointLineU(thePoint, theLineStart, theLineEnd);
 
         if (u < 0.0f || u > 1.0f) {
@@ -757,8 +757,8 @@ public class Util {
     }
 
     public static float distancePointLine(final Vector3f thePoint,
-            final Vector3f theLineStart,
-            final Vector3f theLineEnd) {
+                                          final Vector3f theLineStart,
+                                          final Vector3f theLineEnd) {
         final float u = distancePointLineU(thePoint, theLineStart, theLineEnd);
         final Vector3f myIntersection = new Vector3f();
         myIntersection.x = theLineStart.x + u * (theLineEnd.x - theLineStart.x);
@@ -769,8 +769,8 @@ public class Util {
     }
 
     public static float distancePointLineU(final Vector3f thePoint,
-            final Vector3f theLineStart,
-            final Vector3f theLineEnd) {
+                                           final Vector3f theLineStart,
+                                           final Vector3f theLineEnd) {
         final float myLineMagnitude = theLineStart.distance(theLineEnd);
         final float u = (((thePoint.x - theLineStart.x) * (theLineEnd.x - theLineStart.x))
                 + ((thePoint.y - theLineStart.y) * (theLineEnd.y - theLineStart.y))
@@ -781,7 +781,7 @@ public class Util {
     }
 
     public static float random(float theStart,
-            float theEnd) {
+                               float theEnd) {
         final float myDiff = theEnd - theStart;
         final float myRandomValue = (float) Math.random() * myDiff;
         return myRandomValue + theStart;

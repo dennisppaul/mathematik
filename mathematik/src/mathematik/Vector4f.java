@@ -19,8 +19,6 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
 
 
@@ -28,7 +26,7 @@ import java.io.Serializable;
 
 
 public class Vector4f
-    implements Serializable, Vectorf {
+        implements Serializable, Vectorf {
 
     private static final long serialVersionUID = 5083919691492230155L;
 
@@ -49,7 +47,6 @@ public class Vector4f
         w = 0;
     }
 
-
     public Vector4f(float theX,
                     float theY,
                     float theZ,
@@ -59,7 +56,6 @@ public class Vector4f
             theZ,
             theW);
     }
-
 
     public Vector4f(double theX,
                     double theY,
@@ -71,7 +67,6 @@ public class Vector4f
             theW);
     }
 
-
     public Vector4f(float theX,
                     float theY,
                     float theZ) {
@@ -79,7 +74,6 @@ public class Vector4f
             theY,
             theZ);
     }
-
 
     public Vector4f(double theX,
                     double theY,
@@ -89,13 +83,11 @@ public class Vector4f
             theZ);
     }
 
-
     public Vector4f(float theX,
                     float theY) {
         set(theX,
             theY);
     }
-
 
     public Vector4f(double theX,
                     double theY) {
@@ -103,31 +95,25 @@ public class Vector4f
             theY);
     }
 
-
     public Vector4f(float[] theVector) {
         set(theVector);
     }
-
 
     public Vector4f(double[] theVector) {
         set(theVector);
     }
 
-
     public Vector4f(Vector4f theVector) {
         set(theVector);
     }
-
 
     public Vector4f(Vector3f theVector) {
         set(theVector);
     }
 
-
     public Vector4f(Vector2f theVector) {
         set(theVector);
     }
-
 
     public final void set(float theX,
                           float theY,
@@ -139,7 +125,6 @@ public class Vector4f
         w = theW;
     }
 
-
     public final void set(double theX,
                           double theY,
                           double theZ,
@@ -150,7 +135,6 @@ public class Vector4f
         w = (float) theW;
     }
 
-
     public final void set(float theX,
                           float theY,
                           float theZ) {
@@ -158,7 +142,6 @@ public class Vector4f
         y = theY;
         z = theZ;
     }
-
 
     public final void set(double theX,
                           double theY,
@@ -168,20 +151,17 @@ public class Vector4f
         z = (float) theZ;
     }
 
-
     public final void set(float theX,
                           float theY) {
         x = theX;
         y = theY;
     }
 
-
     public final void set(double theX,
                           double theY) {
         x = (float) theX;
         y = (float) theY;
     }
-
 
     public final void set(float[] theVector) {
         w = theVector[0];
@@ -190,14 +170,12 @@ public class Vector4f
         z = theVector[3];
     }
 
-
     public final void set(double[] theVector) {
         w = (float) theVector[0];
         x = (float) theVector[1];
         y = (float) theVector[2];
         z = (float) theVector[3];
     }
-
 
     public final void set(Vector4f theVector) {
         x = theVector.x;
@@ -206,19 +184,16 @@ public class Vector4f
         w = theVector.w;
     }
 
-
     public final void set(Vector3f theVector) {
         x = theVector.x;
         y = theVector.y;
         z = theVector.z;
     }
 
-
     public final void set(Vector2f theVector) {
         x = theVector.x;
         y = theVector.y;
     }
-
 
     public final void add(Vector4f theVectorA,
                           Vector4f theVectorB) {
@@ -228,14 +203,12 @@ public class Vector4f
         z = theVectorA.z + theVectorB.z;
     }
 
-
     public final void add(Vector4f theVector) {
         w += theVector.w;
         x += theVector.x;
         y += theVector.y;
         z += theVector.z;
     }
-
 
     public final void sub(Vector4f theVectorA,
                           Vector4f theVectorB) {
@@ -245,14 +218,12 @@ public class Vector4f
         z = theVectorA.z - theVectorB.z;
     }
 
-
     public final void sub(Vector4f theVector) {
         w -= theVector.w;
         x -= theVector.x;
         y -= theVector.y;
         z -= theVector.z;
     }
-
 
     public final void scale(float theScalar,
                             Vector4f theVector) {
@@ -262,7 +233,6 @@ public class Vector4f
         z = theScalar * theVector.z;
     }
 
-
     public final void scale(float theScalar) {
         w *= theScalar;
         x *= theScalar;
@@ -270,27 +240,22 @@ public class Vector4f
         z *= theScalar;
     }
 
-
     public final float lengthSquared() {
         return w * w + x * x + y * y + z * z;
     }
-
 
     public final float length() {
         return (float) Math.sqrt(w * w + x * x + y * y + z * z);
     }
 
-
     public final float dot(Vector4f theVector) {
         return x * theVector.x + y * theVector.y + z * theVector.z + w * theVector.w;
     }
-
 
     public void normalize(Vector4f theVector) {
         set(theVector);
         normalize();
     }
-
 
     public final void normalize() {
         final float d = 1 / length();
@@ -299,7 +264,6 @@ public class Vector4f
         z *= d;
         w *= d;
     }
-
 
     public final float[] toArray() {
         final float[] _myArrayRepresentation = new float[4];
@@ -310,7 +274,6 @@ public class Vector4f
         return _myArrayRepresentation;
     }
 
-
     public final boolean isNaN() {
         if (Float.isNaN(x) || Float.isNaN(y) || Float.isNaN(z) || Float.isNaN(w)) {
             return true;
@@ -318,7 +281,6 @@ public class Vector4f
             return false;
         }
     }
-
 
     public final boolean equals(Vector4f theVector) {
         if (w == theVector.w && x == theVector.x && y == theVector.y && z == theVector.z) {
@@ -328,21 +290,18 @@ public class Vector4f
         }
     }
 
-
     public final boolean almost(Vector4f theVector) {
         if (Math.abs(w) - Math.abs(theVector.w) < ALMOST_THRESHOLD
-            && Math.abs(x) - Math.abs(theVector.x) < ALMOST_THRESHOLD
-            && Math.abs(y) - Math.abs(theVector.y) < ALMOST_THRESHOLD
-            && Math.abs(z) - Math.abs(theVector.z) < ALMOST_THRESHOLD) {
+                && Math.abs(x) - Math.abs(theVector.x) < ALMOST_THRESHOLD
+                && Math.abs(y) - Math.abs(theVector.y) < ALMOST_THRESHOLD
+                && Math.abs(z) - Math.abs(theVector.z) < ALMOST_THRESHOLD) {
             return true;
         } else {
             return false;
         }
     }
 
-
     public final String toString() {
         return "(" + x + ", " + y + ", " + z + ", " + w + ")";
     }
-
 }

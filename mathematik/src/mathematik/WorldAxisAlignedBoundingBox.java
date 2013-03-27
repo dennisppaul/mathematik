@@ -19,12 +19,11 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
 
 
 public class WorldAxisAlignedBoundingBox {
+
     /**
      * center of bounding box
      */
@@ -34,4 +33,5 @@ public class WorldAxisAlignedBoundingBox {
      * scale around the center
      */
     public Vector3f scale = new Vector3f();
+
 }

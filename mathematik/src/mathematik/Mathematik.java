@@ -19,12 +19,11 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
 
 
 public interface Mathematik {
 
     float EPSILON = 0.00001f;
+
 }

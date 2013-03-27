@@ -19,8 +19,6 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
 
 
@@ -28,7 +26,7 @@ import java.io.Serializable;
 
 
 public class Rectangle3f
-    implements Serializable {
+        implements Serializable {
 
     private static final long serialVersionUID = -7295490882726338294L;
 
@@ -40,7 +38,6 @@ public class Rectangle3f
         origin = new Vector3f();
         scale = new Vector3f();
     }
-
 
     public Rectangle3f(Vector3f theOrigin,
                        Vector3f theScale) {

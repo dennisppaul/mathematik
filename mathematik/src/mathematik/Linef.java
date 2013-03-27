@@ -19,8 +19,6 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
 
 
@@ -28,7 +26,7 @@ import java.io.Serializable;
 
 
 public class Linef<T extends Vectorf>
-    implements Serializable {
+        implements Serializable {
 
     private static final long serialVersionUID = -1748179277316146123L;
 

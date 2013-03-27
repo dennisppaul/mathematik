@@ -19,8 +19,6 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
 
 
@@ -28,7 +26,7 @@ import java.io.Serializable;
 
 
 public class Plane3f
-    implements Serializable {
+        implements Serializable {
 
     private static final long serialVersionUID = 2390391570305327484L;
 
@@ -51,7 +49,6 @@ public class Plane3f
         vectorB = new Vector3f();
     }
 
-
     public Plane3f(Vector3f theOrigin,
                    Vector3f theVectorA,
                    Vector3f theVectorB) {
@@ -60,7 +57,6 @@ public class Plane3f
         vectorB = theVectorB;
     }
 
-
     public void updateNormal() {
         if (normal == null) {
             normal = new Vector3f();
@@ -68,13 +64,11 @@ public class Plane3f
         Util.calculateNormal(vectorA, vectorB, normal);
     }
 
-
     public void updateD() {
         if (normal != null) {
             d = -normal.dot(origin);
         }
     }
-
 //    private float intersection(Vector3f a, Vector3f b) {
 //        /*
 //         * updateNormal();

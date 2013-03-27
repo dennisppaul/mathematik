@@ -19,20 +19,15 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 /*
  * write the current rotation into the result transformation matrix.
  * if the velocity sampler is enabled the velocity will averaged
  * to avoid jerky turning.
  */
-
-/** @todo
- * the sampling would be more accurate if the delta time
- * would also be taken into account when updating the sampler.
+/**
+ * @todo the sampling would be more accurate if the delta time would also be
+ * taken into account when updating the sampler.
  */
-
-
 package mathematik;
 
 
@@ -58,7 +53,6 @@ public class Rotation {
         this(1);
     }
 
-
     public Rotation(final int theVelocitySamplerSize) {
         _myVelocitySamplerPosition = 0;
         setVelocitySamplerSize(theVelocitySamplerSize);
@@ -70,7 +64,6 @@ public class Rotation {
         _myTempForwardVector = new Vector3f();
     }
 
-
     public void setVelocitySamplerSize(final int theVelocitySamplerSize) {
         _myVelocitySampler = new Vector3f[theVelocitySamplerSize];
         for (int i = 0; i < _myVelocitySampler.length; ++i) {
@@ -78,13 +71,11 @@ public class Rotation {
         }
     }
 
-
     public void flattenVelocitySampler(final Vector3f theVelocity) {
         for (int i = 0; i < _myVelocitySampler.length; i++) {
             add(theVelocity);
         }
     }
-
 
     public void add(final Vector3f theVelocity) {
         _myVelocitySamplerPosition++;
@@ -96,7 +87,6 @@ public class Rotation {
         _myCurrentAverageVelocity.scale(1.0f / (float) _myVelocitySampler.length);
     }
 
-
     public void set(final Vector3f theVelocity,
                     final TransformMatrix4f theResult) {
         if (_myVelocitySampler.length == 1) {
@@ -107,16 +97,13 @@ public class Rotation {
         }
     }
 
-
     public void set(final TransformMatrix4f theResult) {
         pointAt(_myCurrentAverageVelocity, theResult);
     }
 
-
     public void set(final Matrix3f theResult) {
         pointAt(_myCurrentAverageVelocity, theResult);
     }
-
 
     /**
      * @deprecated use 'set' instead.
@@ -128,24 +115,22 @@ public class Rotation {
         set(theVelocity, theResult);
     }
 
-
     public Vector3f getAverageVelocity() {
         return _myCurrentAverageVelocity;
     }
-
 
     public void setUpVector(final Vector3f theUpVector) {
         _myUpVector.set(theUpVector);
     }
 
-
     public void setUpVectorByAngle(final float roll) {
-        /** @todo this is not thought through... */
+        /**
+         * @todo this is not thought through...
+         */
         _myUpVector.x = (float) Math.sin(roll);
-        _myUpVector.z = - (float) Math.cos(roll);
+        _myUpVector.z = -(float) Math.cos(roll);
         _myUpVector.y = 0;
     }
-
 
     private void pointAt(final Vector3f theForwardVector,
                          final Matrix3f theResult) {
@@ -163,7 +148,6 @@ public class Rotation {
         theResult.setYAxis(_myTempSideVector);
         theResult.setZAxis(_myTempUpVector);
     }
-
 
     private void pointAt(final Vector3f theForwardVector,
                          final TransformMatrix4f theResult) {

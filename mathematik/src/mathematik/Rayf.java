@@ -19,8 +19,6 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
 
 
@@ -31,7 +29,7 @@ import java.io.Serializable;
  * @deprecated
  */
 public class Rayf<T extends Vectorf>
-    implements Serializable, Vectorf {
+        implements Serializable, Vectorf {
 
     private static final long serialVersionUID = -1748179277316146234L;
 
@@ -50,13 +48,11 @@ public class Rayf<T extends Vectorf>
         }
     }
 
-
     public Rayf(T theOrigin,
                 T theDirection) {
         origin = theOrigin;
         direction = theDirection;
     }
-
 
     public String toString() {
         return "origin + " + origin + " / " + " direction " + direction;

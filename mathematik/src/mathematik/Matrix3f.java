@@ -19,28 +19,22 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
 /**
  * a 3x3 matrix.
  *
- *  rotation
+ * rotation
  *
- *    rxx ryx rzx
- *    rxy ryy rzy
- *    rxz ryy rzz
+ * rxx ryx rzx rxy ryy rzy rxz ryy rzz
  *
- *  scale
+ * scale
  *
- *    sx 0  0
- *    0  sy 0
- *    0  0  sz
+ * sx 0 0 0 sy 0 0 0 sz
  *
  *
- * also read 'The Matrix and Quaternions FAQ' at http://www.flipcode.com/documents/matrfaq.html
+ * also read 'The Matrix and Quaternions FAQ' at
+ * http://www.flipcode.com/documents/matrfaq.html
  *
  */
-
-
 package mathematik;
 
 
@@ -48,7 +42,7 @@ import java.io.Serializable;
 
 
 public class Matrix3f
-    implements Serializable {
+        implements Serializable {
 
     private static final long serialVersionUID = 104839874874759581L;
 
@@ -88,11 +82,9 @@ public class Matrix3f
         zz = 0.0f;
     }
 
-
     public Matrix3f(Matrix3f theMatrix) {
         set(theMatrix);
     }
-
 
     public Matrix3f(int theType) {
         switch (theType) {
@@ -101,7 +93,6 @@ public class Matrix3f
                 break;
         }
     }
-
 
     private void set(float xx,
                      float yx,
@@ -123,7 +114,6 @@ public class Matrix3f
         this.zz = zz;
     }
 
-
     public final void set(float[] _myArrayRepresentation) {
         xx = _myArrayRepresentation[0];
         yx = _myArrayRepresentation[1];
@@ -135,7 +125,6 @@ public class Matrix3f
         yz = _myArrayRepresentation[7];
         zz = _myArrayRepresentation[8];
     }
-
 
     public final void set(Matrix3f theMatrix) {
         xx = theMatrix.xx;
@@ -149,7 +138,6 @@ public class Matrix3f
         zz = theMatrix.zz;
     }
 
-
     public void setIdentity() {
         xx = 1.0f;
         xy = 0.0f;
@@ -161,7 +149,6 @@ public class Matrix3f
         zy = 0.0f;
         zz = 1.0f;
     }
-
 
     public final void setZero() {
         xx = 0.0f;
@@ -175,7 +162,6 @@ public class Matrix3f
         zz = 0.0f;
     }
 
-
     public void add(float theValue) {
         xx += theValue;
         xy += theValue;
@@ -187,7 +173,6 @@ public class Matrix3f
         zy += theValue;
         zz += theValue;
     }
-
 
     public void add(Matrix3f theMatrixA,
                     Matrix3f theMatrixB) {
@@ -202,7 +187,6 @@ public class Matrix3f
         zz = theMatrixA.zz + theMatrixB.zz;
     }
 
-
     public void add(Matrix3f theMatrix) {
         xx += theMatrix.xx;
         xy += theMatrix.xy;
@@ -214,7 +198,6 @@ public class Matrix3f
         zy += theMatrix.zy;
         zz += theMatrix.zz;
     }
-
 
     public void sub(Matrix3f theMatrixA,
                     Matrix3f theMatrixB) {
@@ -229,7 +212,6 @@ public class Matrix3f
         zz = theMatrixA.zz - theMatrixB.zz;
     }
 
-
     public void sub(Matrix3f theMatrix) {
         xx -= theMatrix.xx;
         xy -= theMatrix.xy;
@@ -241,7 +223,6 @@ public class Matrix3f
         zy -= theMatrix.zy;
         zz -= theMatrix.zz;
     }
-
 
     public void transpose() {
 
@@ -261,7 +242,6 @@ public class Matrix3f
         yz = mySwap;
     }
 
-
     public void transpose(Matrix3f theMatrix) {
         if (this != theMatrix) {
             xx = theMatrix.xx;
@@ -278,11 +258,9 @@ public class Matrix3f
         }
     }
 
-
     public final float determinant() {
         return xx * (yy * zz - yz * zy) + xy * (yz * zx - yx * zz) + xz * (yx * zy - yy * zx);
     }
-
 
     public final void invert() {
         float myDeterminant = determinant();
@@ -302,13 +280,11 @@ public class Matrix3f
         multiply(myDeterminant);
     }
 
-
     public final void setXAxis(Vector3f theVector) {
         xx = theVector.x;
         yx = theVector.y;
         zx = theVector.z;
     }
-
 
     public final void setYAxis(Vector3f theVector) {
         xy = theVector.x;
@@ -316,13 +292,11 @@ public class Matrix3f
         zy = theVector.z;
     }
 
-
     public final void setZAxis(Vector3f theVector) {
         xz = theVector.x;
         yz = theVector.y;
         zz = theVector.z;
     }
-
 
     public final void getXAxis(Vector3f theVector) {
         theVector.x = xx;
@@ -330,13 +304,11 @@ public class Matrix3f
         theVector.z = zx;
     }
 
-
     public final void getYAxis(Vector3f theVector) {
         theVector.x = xy;
         theVector.y = yy;
         theVector.z = zy;
     }
-
 
     public final void getZAxis(Vector3f theVector) {
         theVector.x = xz;
@@ -344,21 +316,17 @@ public class Matrix3f
         theVector.z = zz;
     }
 
-
     public final Vector3f getXAxis() {
         return new Vector3f(xx, yx, zx);
     }
-
 
     public final Vector3f getYAxis() {
         return new Vector3f(xy, yy, zy);
     }
 
-
     public final Vector3f getZAxis() {
         return new Vector3f(xz, yz, zz);
     }
-
 
     public final void setXRotation(float theRadians) {
         float sin = (float) Math.sin(theRadians);
@@ -377,7 +345,6 @@ public class Matrix3f
         zz = cos;
     }
 
-
     public final void setYRotation(float theRadians) {
 
         /**
@@ -386,7 +353,6 @@ public class Matrix3f
          * cos 0 sin(!) 0 1 0 -sin(!) 0 cos
          *
          */
-
         float sin = (float) Math.sin(theRadians);
         float cos = (float) Math.cos(theRadians);
 
@@ -402,7 +368,6 @@ public class Matrix3f
         yz = 0.0f;
         zz = cos;
     }
-
 
     public final void setZRotation(float theRadians) {
         float sin = (float) Math.sin(theRadians);
@@ -421,13 +386,11 @@ public class Matrix3f
         zz = 1.0f;
     }
 
-
     public final void setXYZRotation(Vector3f theRotation) {
         setXYZRotation(theRotation.x,
                        theRotation.y,
                        theRotation.z);
     }
-
 
     public final void setXYZRotation(float theX,
                                      float theY,
@@ -456,7 +419,6 @@ public class Matrix3f
         zz = a * c;
     }
 
-
     public final void setRotation(final Vector4f theRotation) {
         final float u = theRotation.x;
         final float v = theRotation.y;
@@ -478,7 +440,6 @@ public class Matrix3f
         zz = rcos + w * w * (1 - rcos);
     }
 
-
     public final void multiply(float theValue) {
         xx *= theValue;
         xy *= theValue;
@@ -490,7 +451,6 @@ public class Matrix3f
         zy *= theValue;
         zz *= theValue;
     }
-
 
     public final void multiply(Matrix3f theMatrix) {
         float tmp1 = xx * theMatrix.xx + xy * theMatrix.yx + xz * theMatrix.zx;
@@ -513,13 +473,11 @@ public class Matrix3f
         zz = tmp9;
     }
 
-
     public final void transform(Vector3f theVector) {
         theVector.set(xx * theVector.x + yx * theVector.y + zx * theVector.z,
                       xy * theVector.x + yy * theVector.y + zy * theVector.z,
                       theVector.z = xz * theVector.x + yz * theVector.y + zz * theVector.z);
     }
-
 
     public void setScale(Vector3f theScale) {
         xx = theScale.x;
@@ -535,7 +493,6 @@ public class Matrix3f
         zz = theScale.z;
     }
 
-
     public final float[] toArray() {
         _myArrayRepresentation[0] = xx;
         _myArrayRepresentation[1] = yx;
@@ -548,7 +505,6 @@ public class Matrix3f
         _myArrayRepresentation[8] = zz;
         return _myArrayRepresentation;
     }
-
 
     public final float[] toArray4f() {
         /* so that opengl can understand it */
@@ -571,11 +527,9 @@ public class Matrix3f
         return _myArray4fRepresentation;
     }
 
-
     public String toString() {
         return xx + ", " + yx + ", " + zx + "\n" + xy + ", " + yy + ", " + zy + "\n" + xz + ", " + yz + ", " + zz;
     }
-
 
     public static void main(String[] args) {
         Matrix3f myMatrix;

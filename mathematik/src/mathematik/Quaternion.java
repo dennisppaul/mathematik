@@ -19,8 +19,6 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
 
 
@@ -38,14 +36,12 @@ public class Quaternion {
         reset();
     }
 
-
     public Quaternion(float theW, float theX, float theY, float theZ) {
         w = theW;
         x = theX;
         y = theY;
         z = theZ;
     }
-
 
     public void reset() {
         w = 1.0f;
@@ -54,14 +50,12 @@ public class Quaternion {
         z = 0.0f;
     }
 
-
     public void set(float theW, Vector3f theVector3f) {
         w = theW;
         x = theVector3f.x;
         y = theVector3f.y;
         z = theVector3f.z;
     }
-
 
     public void set(Quaternion theQuaternion) {
         w = theQuaternion.w;
@@ -70,14 +64,12 @@ public class Quaternion {
         z = theQuaternion.z;
     }
 
-
     public void multiply(Quaternion theA, Quaternion theB) {
         w = theA.w * theB.w - theA.x * theB.x - theA.y * theB.y - theA.z * theB.z;
         x = theA.w * theB.x + theA.x * theB.w + theA.y * theB.z - theA.z * theB.y;
         y = theA.w * theB.y + theA.y * theB.w + theA.z * theB.x - theA.x * theB.z;
         z = theA.w * theB.z + theA.z * theB.w + theA.x * theB.y - theA.y * theB.x;
     }
-
 
     public Vector4f getVectorAndAngle() {
         final Vector4f theResult = new Vector4f();

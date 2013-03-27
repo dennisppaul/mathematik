@@ -19,8 +19,6 @@
  * {@link http://www.gnu.org/licenses/lgpl.html}
  *
  */
-
-
 package mathematik;
 
 
@@ -28,7 +26,7 @@ import java.io.Serializable;
 
 
 public class Vector2i
-    implements Serializable {
+        implements Serializable {
 
     private static final long serialVersionUID = 1578087698419866994L;
 
@@ -41,23 +39,19 @@ public class Vector2i
         y = 0;
     }
 
-
     public Vector2i(int theX,
                     int theY) {
         set(theX,
             theY);
     }
 
-
     public Vector2i(Vector2i theVector) {
         set(theVector);
     }
 
-
     public Vector2i(int[] theVector) {
         set(theVector);
     }
-
 
     public void set(int theX,
                     int theY) {
@@ -65,18 +59,15 @@ public class Vector2i
         y = theY;
     }
 
-
     public void set(Vector2i theVector) {
         x = theVector.x;
         y = theVector.y;
     }
 
-
     public void set(int[] theVector) {
         x = theVector[0];
         y = theVector[1];
     }
-
 
     public final void sub(final Vector2i theVectorA,
                           final Vector2i theVectorB) {
@@ -84,18 +75,15 @@ public class Vector2i
         y = theVectorA.y - theVectorB.y;
     }
 
-
     public final void sub(final Vector2i theVector) {
         x -= theVector.x;
         y -= theVector.y;
     }
 
-
     public final void sub(final int theX, final int theY) {
         x -= theX;
         y -= theY;
     }
-
 
     public final void add(final Vector2i theVectorA,
                           final Vector2i theVectorB) {
@@ -103,18 +91,15 @@ public class Vector2i
         y = theVectorA.y + theVectorB.y;
     }
 
-
     public final void add(final Vector2i theVector) {
         x += theVector.x;
         y += theVector.y;
     }
 
-
     public final void add(final int theX, final int theY) {
         x += theX;
         y += theY;
     }
-
 
     public final void scale(float theScalar,
                             Vector2i theVector) {
@@ -122,18 +107,15 @@ public class Vector2i
         y = (int) (theScalar * theVector.y);
     }
 
-
     public final void scale(float theScalar) {
         x *= theScalar;
         y *= theScalar;
     }
 
-
     public final void scale(Vector2i theVector) {
         x *= theVector.x;
         y *= theVector.y;
     }
-
 
     public final String toString() {
         return "(" + x + ", " + y + ")";

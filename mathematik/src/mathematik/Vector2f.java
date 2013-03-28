@@ -82,141 +82,163 @@ public class Vector2f
         return new Vector2f(x, y);
     }
 
-    public final void set(float theX,
-                          float theY) {
+    public final Vector2f set(float theX,
+                              float theY) {
         x = theX;
         y = theY;
+        return this;
     }
 
-    public final void set(double theX,
-                          double theY) {
+    public final Vector2f set(double theX,
+                              double theY) {
         x = (float) theX;
         y = (float) theY;
+        return this;
     }
 
-    public final void set(float[] theVector) {
+    public final Vector2f set(float[] theVector) {
         x = theVector[0];
         y = theVector[1];
+        return this;
     }
 
-    public final void set(double[] theVector) {
+    public final Vector2f set(double[] theVector) {
         x = (float) theVector[0];
         y = (float) theVector[1];
+        return this;
     }
 
-    public final void set(int[] theVector) {
+    public final Vector2f set(int[] theVector) {
         x = theVector[0];
         y = theVector[1];
+        return this;
     }
 
-    public final void set(Vector2f theVector) {
+    public final Vector2f set(Vector2f theVector) {
         x = theVector.x;
         y = theVector.y;
+        return this;
     }
 
-    public final void add(Vector2f theVectorA,
-                          Vector2f theVectorB) {
+    public Vector2f add(Vector2f theVectorA,
+                        Vector2f theVectorB) {
         x = theVectorA.x + theVectorB.x;
         y = theVectorA.y + theVectorB.y;
+        return this;
     }
 
-    public void add(final int theX, final int theY) {
+    public Vector2f add(final int theX, final int theY) {
         x += theX;
         y += theY;
+        return this;
     }
 
-    public void add(final float theX, final float theY) {
+    public Vector2f add(final float theX, final float theY) {
         x += theX;
         y += theY;
+        return this;
     }
 
-    public void add(final double theX, final double theY) {
+    public Vector2f add(final double theX, final double theY) {
         x += theX;
         y += theY;
+        return this;
     }
 
-    public final void add(Vector2f theVector) {
+    public Vector2f add(Vector2f theVector) {
         x += theVector.x;
         y += theVector.y;
+        return this;
     }
 
-    public final void sub(Vector2f theVectorA,
-                          Vector2f theVectorB) {
+    public Vector2f sub(Vector2f theVectorA,
+                        Vector2f theVectorB) {
         x = theVectorA.x - theVectorB.x;
         y = theVectorA.y - theVectorB.y;
+        return this;
     }
 
-    public final void sub(Vector2f theVector) {
+    public Vector2f sub(Vector2f theVector) {
         x -= theVector.x;
         y -= theVector.y;
+        return this;
     }
 
-    public final void sub(float theX, float theY) {
+    public Vector2f sub(float theX, float theY) {
         x -= theX;
         y -= theY;
+        return this;
     }
 
-    public final void scale(float theScalar,
-                            Vector2f theVector) {
+    public Vector2f scale(float theScalar,
+                          Vector2f theVector) {
         x = theScalar * theVector.x;
         y = theScalar * theVector.y;
+        return this;
     }
 
-    public final void scale(float theScalar) {
+    public Vector2f scale(float theScalar) {
         x *= theScalar;
         y *= theScalar;
+        return this;
     }
 
-    public final void scale(Vector2f theVector) {
+    public Vector2f scale(Vector2f theVector) {
         x *= theVector.x;
         y *= theVector.y;
+        return this;
     }
 
-    public final void scale(float theXScalar, float theYScalar) {
+    public Vector2f scale(float theXScalar, float theYScalar) {
         x *= theXScalar;
         y *= theYScalar;
+        return this;
     }
 
     public float direction() {
         return (float) Math.atan2(y, x);
     }
 
-    public final float dot(Vector2f theVector) {
+    public float dot(Vector2f theVector) {
         return x * theVector.x + y * theVector.y;
     }
 
-    public final void cross(Vector2f theVector) {
+    public Vector2f cross(Vector2f theVector) {
         x = theVector.y;
         y = -theVector.x;
+        return this;
     }
 
-    public final void cross() {
+    public Vector2f cross() {
         final float myX = y;
         y = -x;
         x = myX;
+        return this;
     }
 
-    public final float length() {
+    public float length() {
         return (float) Math.sqrt(x * x + y * y);
     }
 
-    public final float lengthSquared() {
+    public float lengthSquared() {
         return x * x + y * y;
     }
 
-    public final void normalize(Vector2f theVector) {
+    public Vector2f normalize(Vector2f theVector) {
         float inverseMag = 1.0f / (float) Math.sqrt(theVector.x * theVector.x + theVector.y * theVector.y);
         x = theVector.x * inverseMag;
         y = theVector.y * inverseMag;
+        return this;
     }
 
-    public final void normalize() {
+    public Vector2f normalize() {
         float inverseMag = 1.0f / (float) Math.sqrt(x * x + y * y);
         x *= inverseMag;
         y *= inverseMag;
+        return this;
     }
 
-    public final float angle(Vector2f theVector) {
+    public float angle(Vector2f theVector) {
         float d = dot(theVector) / (length() * theVector.length());
         if (d < -1.0f) {
             d = -1.0f;
@@ -227,11 +249,12 @@ public class Vector2f
         return (float) Math.acos(d);
     }
 
-    public final void rotate(float theRadians) {
+    public Vector2f rotate(float theRadians) {
         final float myX = (float) (x * Math.cos(theRadians) - y * Math.sin(theRadians));
         final float myY = (float) (y * Math.cos(theRadians) + x * Math.sin(theRadians));
         x = myX;
         y = myY;
+        return this;
     }
 
     public final float distanceSquared(Vector2f thePoint) {
@@ -240,20 +263,20 @@ public class Vector2f
         return dx * dx + dy * dy;
     }
 
-    public final float distance(Vector2f thePoint) {
+    public float distance(Vector2f thePoint) {
         float dx = x - thePoint.x;
         float dy = y - thePoint.y;
         return (float) Math.sqrt(dx * dx + dy * dy);
     }
 
-    public final float[] toArray() {
+    public float[] toArray() {
         final float[] _myArrayRepresentation = new float[2];
         _myArrayRepresentation[0] = x;
         _myArrayRepresentation[1] = y;
         return _myArrayRepresentation;
     }
 
-    public final boolean isNaN() {
+    public boolean isNaN() {
         if (Float.isNaN(x) || Float.isNaN(y)) {
             return true;
         } else {
@@ -261,12 +284,26 @@ public class Vector2f
         }
     }
 
-    public final boolean equals(Vector2f theVector) {
+    public boolean equals(Vector2f theVector) {
         if (x == theVector.x && y == theVector.y) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public int hashCode() {
+        int hash = 5;
+        hash = 73 * hash + Float.floatToIntBits(this.x);
+        hash = 73 * hash + Float.floatToIntBits(this.y);
+        return hash;
+    }
+
+    public boolean equals(final Object theVector) {
+        if (!(theVector instanceof Vector2f)) {
+            return false;
+        }
+        return equals((Vector2f) theVector);
     }
 
     /**
@@ -278,7 +315,7 @@ public class Vector2f
         return x == 0 && y == 0;
     }
 
-    public final boolean almost(Vector2f theVector) {
+    public boolean almost(Vector2f theVector) {
         if (Math.abs(x - theVector.x) < ALMOST_THRESHOLD
                 && Math.abs(y - theVector.y) < ALMOST_THRESHOLD) {
             return true;
@@ -287,7 +324,7 @@ public class Vector2f
         }
     }
 
-    public final String toString() {
+    public String toString() {
         return "(" + x + ", " + y + ")";
     }
 }

@@ -126,69 +126,80 @@ public class Vector3f
         set(theVector);
     }
 
-    public final void set(float theX, float theY, float theZ) {
+    public final Vector3f set(float theX, float theY, float theZ) {
         x = theX;
         y = theY;
         z = theZ;
+        return this;
     }
 
-    public final void set(double theX, double theY, double theZ) {
+    public final Vector3f set(double theX, double theY, double theZ) {
         x = (float) theX;
         y = (float) theY;
         z = (float) theZ;
+        return this;
     }
 
-    public final void set(float theX, float theY) {
+    public final Vector3f set(float theX, float theY) {
         x = theX;
         y = theY;
+        return this;
     }
 
-    public final void set(double theX, double theY) {
+    public final Vector3f set(double theX, double theY) {
         x = (float) theX;
         y = (float) theY;
+        return this;
     }
 
-    public final void set(float[] theVector) {
+    public final Vector3f set(float[] theVector) {
         x = theVector[0];
         y = theVector[1];
         z = theVector[2];
+        return this;
     }
 
-    public final void set(double[] theVector) {
+    public final Vector3f set(double[] theVector) {
         x = (float) theVector[0];
         y = (float) theVector[1];
         z = (float) theVector[2];
+        return this;
     }
 
-    public final void set(int[] theVector) {
+    public final Vector3f set(int[] theVector) {
         x = theVector[0];
         y = theVector[1];
         z = theVector[2];
+        return this;
     }
 
-    public final void set(Vector3f theVector) {
+    public final Vector3f set(Vector3f theVector) {
         x = theVector.x;
         y = theVector.y;
         z = theVector.z;
+        return this;
     }
 
-    public final void set(Vector2f theVector) {
+    public final Vector3f set(Vector2f theVector) {
         x = theVector.x;
         y = theVector.y;
+        return this;
     }
 
-    public final void set(Vector3i theVector) {
+    public final Vector3f set(Vector3i theVector) {
         x = theVector.x;
         y = theVector.y;
         z = theVector.z;
+        return this;
     }
 
-    public final void set(Vector2i theVector) {
+    public final Vector3f set(Vector2i theVector) {
         x = theVector.x;
         y = theVector.y;
+        return this;
     }
 
-    public final void set(String theVectorString) {
+    public final Vector3f set(String theVectorString) {
         theVectorString = theVectorString.replace("(", "");
         theVectorString = theVectorString.replace(")", "");
         theVectorString = theVectorString.replaceAll(" ", "");
@@ -206,41 +217,48 @@ public class Vector3f
             z = Float.parseFloat(myComponents[2]);
         } catch (Exception ex2) {
         }
+        return this;
     }
 
-    public final void add(Vector3f theVectorA, Vector3f theVectorB) {
+    public Vector3f add(Vector3f theVectorA, Vector3f theVectorB) {
         x = theVectorA.x + theVectorB.x;
         y = theVectorA.y + theVectorB.y;
         z = theVectorA.z + theVectorB.z;
+        return this;
     }
 
-    public final void add(Vector3f theVector) {
+    public Vector3f add(Vector3f theVector) {
         x += theVector.x;
         y += theVector.y;
         z += theVector.z;
+        return this;
     }
 
-    public final void add(float theX, float theY) {
+    public Vector3f add(float theX, float theY) {
         x += theX;
         y += theY;
+        return this;
     }
 
-    public final void add(float theX, float theY, float theZ) {
+    public Vector3f add(float theX, float theY, float theZ) {
         x += theX;
         y += theY;
         z += theZ;
+        return this;
     }
 
-    public final void sub(Vector3f theVectorA, Vector3f theVectorB) {
+    public Vector3f sub(Vector3f theVectorA, Vector3f theVectorB) {
         x = theVectorA.x - theVectorB.x;
         y = theVectorA.y - theVectorB.y;
         z = theVectorA.z - theVectorB.z;
+        return this;
     }
 
-    public final void sub(Vector3f theVector) {
+    public Vector3f sub(Vector3f theVector) {
         x -= theVector.x;
         y -= theVector.y;
         z -= theVector.z;
+        return this;
     }
 
     /**
@@ -252,8 +270,9 @@ public class Vector3f
      * @shortdesc Use this method to negate a vector.
      * @related scale ( )
      */
-    public final void negate() {
+    public Vector3f negate() {
         scale(-1);
+        return this;
     }
 
     /**
@@ -270,10 +289,11 @@ public class Vector3f
      * @related divide ( )
      * @related negate ( )
      */
-    public final void scale(final float theScalar) {
+    public Vector3f scale(final float theScalar) {
         x *= theScalar;
         y *= theScalar;
         z *= theScalar;
+        return this;
     }
 
     /**
@@ -281,10 +301,11 @@ public class Vector3f
      * @param theVector Vector3f: vector with the value each coord is scaled
      * with
      */
-    public final void scale(final Vector3f theVector) {
+    public Vector3f scale(final Vector3f theVector) {
         x *= theVector.x;
         y *= theVector.y;
         z *= theVector.z;
+        return this;
     }
 
     /**
@@ -293,20 +314,22 @@ public class Vector3f
      * @param theY float
      * @param theZ float
      */
-    public final void scale(float theX, float theY, float theZ) {
+    public Vector3f scale(float theX, float theY, float theZ) {
         x *= theX;
         y *= theY;
         z *= theZ;
+        return this;
     }
 
     /**
      * @param theScalar float or int: value the given vector is scaled with
      * @param theVector Vector3f: vector the vector is set to
      */
-    public final void scale(final float theScalar, final Vector3f theVector) {
+    public Vector3f scale(final float theScalar, final Vector3f theVector) {
         x = theScalar * theVector.x;
         y = theScalar * theVector.y;
         z = theScalar * theVector.z;
+        return this;
     }
 
     /**
@@ -314,19 +337,21 @@ public class Vector3f
      *
      * @param theDivisor
      */
-    public final void divide(final float theDivisor) {
+    public Vector3f divide(final float theDivisor) {
         x /= theDivisor;
         y /= theDivisor;
         z /= theDivisor;
+        return this;
     }
 
-    public final void divide(final Vector3f theVector) {
+    public Vector3f divide(final Vector3f theVector) {
         x /= theVector.x;
         y /= theVector.y;
         z /= theVector.z;
+        return this;
     }
 
-    public final float lengthSquared() {
+    public float lengthSquared() {
         return x * x + y * y + z * z;
     }
 
@@ -339,11 +364,11 @@ public class Vector3f
      * @return float: the length of the vector
      * @shortdesc Calculates the length of the vector.
      */
-    public final float length() {
+    public float length() {
         return (float) Math.sqrt(lengthSquared());
     }
 
-    public final float magnitude() {
+    public float magnitude() {
         return length();
     }
 
@@ -354,8 +379,8 @@ public class Vector3f
      * @param theVectorA
      * @param theVectorB
      */
-    public final void cross(final Vector3f theVectorA, final Vector3f theVectorB) {
-        set(theVectorA.cross(theVectorB));
+    public Vector3f cross(final Vector3f theVectorA, final Vector3f theVectorB) {
+        return set(theVectorA.cross(theVectorB));
     }
 
     /**
@@ -378,7 +403,7 @@ public class Vector3f
      * @param theVector, the other vector
      * @return float, dot product of two vectors
      */
-    public final float dot(Vector3f theVector) {
+    public float dot(Vector3f theVector) {
         return x * theVector.x + y * theVector.y + z * theVector.z;
     }
 
@@ -386,20 +411,22 @@ public class Vector3f
      * Sets the vector to the given one and norms it to the length of 1
      *
      */
-    public final void normalize(Vector3f theVector) {
+    public Vector3f normalize(Vector3f theVector) {
         set(theVector);
         normalize();
+        return this;
     }
 
     /**
      * Norms the vector to the length of 1
      *
      */
-    public final void normalize() {
+    public Vector3f normalize() {
         float inverseMag = 1.0f / (float) Math.sqrt(x * x + y * y + z * z);
         x *= inverseMag;
         y *= inverseMag;
         z *= inverseMag;
+        return this;
     }
 
     /**
@@ -428,7 +455,7 @@ public class Vector3f
         normalize();
     }
 
-    public final float angle(Vector3f theVector) {
+    public float angle(Vector3f theVector) {
         float d = dot(theVector) / (length() * theVector.length());
         /**
          * @todo check these lines.
@@ -442,26 +469,26 @@ public class Vector3f
         return (float) Math.acos(d);
     }
 
-    public final float distanceSquared(Vector3f thePoint) {
+    public float distanceSquared(Vector3f thePoint) {
         float dx = x - thePoint.x;
         float dy = y - thePoint.y;
         float dz = z - thePoint.z;
         return dx * dx + dy * dy + dz * dz;
     }
 
-    public final float distance(Vector3f thePoint) {
+    public float distance(Vector3f thePoint) {
         float dx = x - thePoint.x;
         float dy = y - thePoint.y;
         float dz = z - thePoint.z;
         return (float) Math.sqrt(dx * dx + dy * dy + dz * dz);
     }
 
-    public final float distanceL1(Vector3f thePoint) {
+    public float distanceL1(Vector3f thePoint) {
         return Math.abs(x - thePoint.x) + Math.abs(y - thePoint.y)
                 + Math.abs(z - thePoint.z);
     }
 
-    public final void min(Vector3f theMin) {
+    public Vector3f min(Vector3f theMin) {
         if (x < theMin.x) {
             x = theMin.x;
         }
@@ -471,9 +498,10 @@ public class Vector3f
         if (z < theMin.z) {
             z = theMin.z;
         }
+        return this;
     }
 
-    public final void min(float theX, float theY, float theZ) {
+    public Vector3f min(float theX, float theY, float theZ) {
         if (x < theX) {
             x = theX;
         }
@@ -483,9 +511,10 @@ public class Vector3f
         if (z < theZ) {
             z = theZ;
         }
+        return this;
     }
 
-    public final void max(Vector3f theMax) {
+    public Vector3f max(Vector3f theMax) {
         if (x > theMax.x) {
             x = theMax.x;
         }
@@ -495,9 +524,10 @@ public class Vector3f
         if (z > theMax.z) {
             z = theMax.z;
         }
+        return this;
     }
 
-    public final void max(float theX, float theY, float theZ) {
+    public Vector3f max(float theX, float theY, float theZ) {
         if (x > theX) {
             x = theX;
         }
@@ -507,9 +537,10 @@ public class Vector3f
         if (z > theZ) {
             z = theZ;
         }
+        return this;
     }
 
-    public final float[] toArray() {
+    public float[] toArray() {
         final float[] _myArrayRepresentation = new float[3];
         _myArrayRepresentation[0] = x;
         _myArrayRepresentation[1] = y;
@@ -517,7 +548,7 @@ public class Vector3f
         return _myArrayRepresentation;
     }
 
-    public final boolean isNaN() {
+    public boolean isNaN() {
         if (Float.isNaN(x) || Float.isNaN(y) || Float.isNaN(z)) {
             return true;
         } else {
@@ -525,7 +556,7 @@ public class Vector3f
         }
     }
 
-    public final boolean equals(final Vector3f theVector) {
+    public boolean equals(final Vector3f theVector) {
         if (x == theVector.x && y == theVector.y && z == theVector.z) {
             return true;
         } else {
@@ -533,15 +564,22 @@ public class Vector3f
         }
     }
 
-    public final boolean equals(final Object theVector) {
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Float.floatToIntBits(this.x);
+        hash = 17 * hash + Float.floatToIntBits(this.y);
+        hash = 17 * hash + Float.floatToIntBits(this.z);
+        return hash;
+    }
+
+    public boolean equals(final Object theVector) {
         if (!(theVector instanceof Vector3f)) {
             return false;
         }
-
         return equals((Vector3f) theVector);
     }
 
-    public final boolean almost(final Vector3f theVector) {
+    public boolean almost(final Vector3f theVector) {
         if (Math.abs(x - theVector.x) < ALMOST_THRESHOLD
                 && Math.abs(y - theVector.y) < ALMOST_THRESHOLD
                 && Math.abs(z - theVector.z) < ALMOST_THRESHOLD) {
@@ -560,7 +598,7 @@ public class Vector3f
         }
     }
 
-    public final String toString() {
+    public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
     }
     public static final int X = 0;

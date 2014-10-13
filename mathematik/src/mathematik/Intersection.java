@@ -557,7 +557,7 @@ public final class Intersection
                                                final Vector3f theVertex0,
                                                final Vector3f theVertex1,
                                                final Vector3f theVertex2,
-                                               final Result theResult,
+                                               final IntersectionResult theResult,
                                                final boolean theCullingFlag) {
 
         float det;
@@ -631,7 +631,7 @@ public final class Intersection
         return true;
     }
 
-    public static class Result {
+    public static class IntersectionResult {
 
         public float t;
 
